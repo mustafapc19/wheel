@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { Search } from "@bigbinary/neeto-icons";
+import { Plus, Search } from "@bigbinary/neeto-icons";
 import { Button } from "@bigbinary/neetoui/v2";
-import { Container, Header, MenuBar } from "@bigbinary/neetoui/v2/layouts";
+import { Container, Header } from "@bigbinary/neetoui/v2/layouts";
 import EmptyNotesListImage from "images/EmptyNotesList";
 import { Input, PageLoader } from "neetoui";
 
@@ -11,6 +11,7 @@ import EmptyState from "components/Common/EmptyState";
 
 // import { SubHeader } from "neetoui/layouts";
 import DeleteAlert from "./DeleteAlert";
+import Menubar from "./MenuBar";
 import NewNotePane from "./NewNotePane";
 import NoteTable from "./NoteTable";
 
@@ -45,12 +46,7 @@ const Notes = () => {
   return (
     <>
       <div className="flex w-full">
-        <MenuBar showMenu>
-          <MenuBar.Block label="All" count={13} active />
-          <MenuBar.Block label="Users" count={2} />
-          <MenuBar.Block label="Leads" count={7} />
-          <MenuBar.Block label="Visitors" count={4} />
-        </MenuBar>
+        <Menubar />
         <Container>
           <Header
             title="All Notes"
@@ -82,9 +78,10 @@ const Notes = () => {
                 <div>
                   <Button
                     onClick={function noRefCheck() {}}
-                    label="Add New Note +"
+                    label="Add New Note"
                     style="primary"
                     size="large"
+                    icon={Plus}
                     fullWidth
                   />
                 </div>
