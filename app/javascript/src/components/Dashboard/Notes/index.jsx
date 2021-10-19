@@ -78,7 +78,7 @@ const Notes = () => {
                 <div className="flex">
                   <Button
                     onClick={function noRefCheck() {}}
-                    label="Add New Note"
+                    label="Add Note"
                     style="primary"
                     size="large"
                     icon={Plus}
