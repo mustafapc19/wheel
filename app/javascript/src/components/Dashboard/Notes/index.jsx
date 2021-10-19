@@ -44,21 +44,29 @@ const Notes = () => {
 
   return (
     <>
-      <Header
-        title="All Notes"
-        menuBarToggle={() => {}}
-        actionBlock={
-          <div className="flex justify-between mr-2 w-max">
-            <div className="w-96">
-              <Input
-                className="pr-2 w-96"
-                onChange={e => setSearchTerm(e.target.value)}
-                placeholder="Search Name, Email, Phone Number"
-                size="large"
-                value={searchTerm}
-                prefix={<Search size={16} />}
-              />
-              {/* <SubHeader
+      <div className="flex w-full">
+        <MenuBar showMenu>
+          <MenuBar.Block label="All" count={13} active />
+          <MenuBar.Block label="Users" count={2} />
+          <MenuBar.Block label="Leads" count={7} />
+          <MenuBar.Block label="Visitors" count={4} />
+        </MenuBar>
+        <Container>
+          <Header
+            title="All Notes"
+            menuBarToggle={() => {}}
+            actionBlock={
+              <div className="flex justify-between ">
+                <div className="w-96">
+                  <Input
+                    className="pr-2 w-96"
+                    onChange={e => setSearchTerm(e.target.value)}
+                    placeholder="Search Name, Email, Phone Number"
+                    size="large"
+                    value={searchTerm}
+                    prefix={<Search size={16} />}
+                  />
+                  {/* <SubHeader
                 searchProps={{
                   value: searchTerm,
                   placeHolder: "Search Name, Email, Phone Number",
@@ -70,27 +78,19 @@ const Notes = () => {
                 //   disabled: !selectedNoteIds.length
                 // }}
               /> */}
-            </div>
-            <div>
-              <Button
-                onClick={function noRefCheck() {}}
-                label="Add New Note +"
-                style="primary"
-                size="large"
-                fullWidth
-              />
-            </div>
-          </div>
-        }
-      />
-      <div className="flex">
-        <MenuBar showMenu>
-          <MenuBar.Block label="All" count={13} active />
-          <MenuBar.Block label="Users" count={2} />
-          <MenuBar.Block label="Leads" count={7} />
-          <MenuBar.Block label="Visitors" count={4} />
-        </MenuBar>
-        <Container>
+                </div>
+                <div>
+                  <Button
+                    onClick={function noRefCheck() {}}
+                    label="Add New Note +"
+                    style="primary"
+                    size="large"
+                    fullWidth
+                  />
+                </div>
+              </div>
+            }
+          />
           {notes.length ? (
             <>
               <NoteTable
