@@ -3,25 +3,19 @@ import React, { useEffect, useState } from "react";
 import { Plus, Search } from "@bigbinary/neeto-icons";
 import { Button } from "@bigbinary/neetoui/v2";
 import { Container, Header } from "@bigbinary/neetoui/v2/layouts";
-import EmptyNotesListImage from "images/EmptyNotesList";
 import { Input, PageLoader } from "neetoui";
 
-import notesApi from "apis/notes";
-import EmptyState from "components/Common/EmptyState";
-
-// import { SubHeader } from "neetoui/layouts";
-import DeleteAlert from "./DeleteAlert";
+import Card from "./Card";
 import Menubar from "./MenuBar";
 import NewNotePane from "./NewNotePane";
-import NoteTable from "./NoteTable";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  // const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
-  const [notes, setNotes] = useState([]);
+  // const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  // const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     fetchNotes();
@@ -30,10 +24,10 @@ const Notes = () => {
   const fetchNotes = async () => {
     try {
       setLoading(true);
-      const response = await notesApi.fetch();
-      setNotes(response.data.notes);
+      // const response = await notesApi.fetch();
+      // setNotes(response.data.notes);
     } catch (error) {
-      logger.error(error);
+      // logger.error(error);
     } finally {
       setLoading(false);
     }
@@ -88,35 +82,27 @@ const Notes = () => {
               </div>
             }
           />
-          {notes.length ? (
-            <>
-              <NoteTable
-                selectedNoteIds={selectedNoteIds}
-                setSelectedNoteIds={setSelectedNoteIds}
-                notes={notes}
-              />
-            </>
-          ) : (
-            <EmptyState
-              image={EmptyNotesListImage}
-              title="Looks like you don't have any notes!"
-              subtitle="Add your notes to send customized emails to them."
-              primaryAction={() => setShowNewNotePane(true)}
-              primaryActionLabel="Add New Note"
-            />
-          )}
+
+          <>
+            {Array(4)
+              .fill(0)
+              .map((_, index) => (
+                <Card key={index.toString()}></Card>
+              ))}
+          </>
+
           <NewNotePane
             showPane={showNewNotePane}
             setShowPane={setShowNewNotePane}
             fetchNotes={fetchNotes}
           />
-          {showDeleteAlert && (
+          {/* {showDeleteAlert && (
             <DeleteAlert
               selectedNoteIds={selectedNoteIds}
               onClose={() => setShowDeleteAlert(false)}
               refetch={fetchNotes}
             />
-          )}
+          )} */}
         </Container>
       </div>
     </>

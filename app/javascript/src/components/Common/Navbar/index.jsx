@@ -62,7 +62,7 @@ const NavBar = () => {
           }
         ],
         email: "oliver.smith@example.com",
-        imageUrl: "https://randomuser.me/api/portraits/men/10.jpg",
+        imageUrl: "https://i.pravatar.cc/300",
         name: "oliver smith"
       }}
     ></Sidebar>
