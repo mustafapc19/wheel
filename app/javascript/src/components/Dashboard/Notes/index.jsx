@@ -52,10 +52,10 @@ const Notes = () => {
             title="All Notes"
             menuBarToggle={() => {}}
             actionBlock={
-              <div className="flex justify-between ">
+              <div className="flex ">
                 <div className="w-96">
                   <Input
-                    className="pr-2 w-96"
+                    className="pr-4 w-90"
                     onChange={e => setSearchTerm(e.target.value)}
                     placeholder="Search Name, Email, Phone Number"
                     size="large"
@@ -75,7 +75,7 @@ const Notes = () => {
                 // }}
               /> */}
                 </div>
-                <div>
+                <div className="flex">
                   <Button
                     onClick={function noRefCheck() {}}
                     label="Add New Note"
