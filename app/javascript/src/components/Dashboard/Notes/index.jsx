@@ -72,7 +72,7 @@ const Notes = () => {
                 </div>
                 <div className="flex">
                   <Button
-                    onClick={function noRefCheck() {}}
+                    onClick={() => setShowNewNotePane(true)}
                     label="Add Note"
                     style="primary"
                     size="large"
@@ -104,7 +104,6 @@ const Notes = () => {
             <DeleteAlert
               onClose={() => setShowDeleteAlert(false)}
               showDeleteAlert={showDeleteAlert}
-              // refetch={fetchNotes}
             />
           )}
         </Container>
