@@ -10,7 +10,7 @@ import Menubar from "./MenuBar";
 import NewNotePane from "./NewNotePane";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   // const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,7 +33,7 @@ const Notes = () => {
     }
   };
 
-  if (loading) {
+  if (isLoading) {
     return <PageLoader />;
   }
 
@@ -46,10 +46,10 @@ const Notes = () => {
             title="All Notes"
             menuBarToggle={() => {}}
             actionBlock={
-              <div className="flex ">
+              <div className="flex space-x-4">
                 <div className="w-96">
                   <Input
-                    className="pr-4 w-90"
+                    className="w-90"
                     onChange={e => setSearchTerm(e.target.value)}
                     placeholder="Search Name, Email, Phone Number"
                     size="large"
@@ -69,7 +69,7 @@ const Notes = () => {
                 // }}
               /> */}
                 </div>
-                <div className="flex pr-4">
+                <div className="flex">
                   <Button
                     onClick={function noRefCheck() {}}
                     label="Add Note"
