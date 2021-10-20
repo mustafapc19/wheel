@@ -3,7 +3,7 @@ import React from "react";
 import { MenuVertical } from "@bigbinary/neeto-icons";
 import { Dropdown, Typography } from "@bigbinary/neetoui/v2";
 
-const CardHeader = () => {
+const CardHeader = ({ setShowDeleteAlert }) => {
   return (
     <>
       <div className="flex justify-between">
@@ -14,7 +14,13 @@ const CardHeader = () => {
           buttonStyle="text"
         >
           <li>Edit</li>
-          <li>Delete</li>
+          <li
+            onClick={() => {
+              setShowDeleteAlert(true);
+            }}
+          >
+            Delete
+          </li>
         </Dropdown>
       </div>
     </>

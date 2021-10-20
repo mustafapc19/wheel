@@ -6,13 +6,14 @@ import { Container, Header } from "@bigbinary/neetoui/v2/layouts";
 import { Input, PageLoader } from "neetoui";
 
 import Card from "./Card";
+import DeleteAlert from "./DeleteAlert";
 import Menubar from "./MenuBar";
 import NewNotePane from "./NewNotePane";
 
 const Notes = () => {
   const [isLoading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
-  // const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   // const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   // const [notes, setNotes] = useState([]);
@@ -87,7 +88,10 @@ const Notes = () => {
             {Array(4)
               .fill(0)
               .map((_, index) => (
-                <Card key={index.toString()}></Card>
+                <Card
+                  key={index.toString()}
+                  setShowDeleteAlert={setShowDeleteAlert}
+                ></Card>
               ))}
           </div>
 
@@ -96,13 +100,13 @@ const Notes = () => {
             setShowPane={setShowNewNotePane}
             fetchNotes={fetchNotes}
           />
-          {/* {showDeleteAlert && (
+          {showDeleteAlert && (
             <DeleteAlert
-              selectedNoteIds={selectedNoteIds}
               onClose={() => setShowDeleteAlert(false)}
-              refetch={fetchNotes}
+              showDeleteAlert={showDeleteAlert}
+              // refetch={fetchNotes}
             />
-          )} */}
+          )}
         </Container>
       </div>
     </>
