@@ -69,7 +69,7 @@ const Notes = () => {
                 // }}
               /> */}
                 </div>
-                <div className="flex">
+                <div className="flex pr-4">
                   <Button
                     onClick={function noRefCheck() {}}
                     label="Add Note"
@@ -83,13 +83,13 @@ const Notes = () => {
             }
           />
 
-          <>
+          <div className="flex-col w-full">
             {Array(4)
               .fill(0)
               .map((_, index) => (
                 <Card key={index.toString()}></Card>
               ))}
-          </>
+          </div>
 
           <NewNotePane
             showPane={showNewNotePane}
