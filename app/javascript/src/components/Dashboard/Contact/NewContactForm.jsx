@@ -1,12 +1,12 @@
 import React from "react";
 
 import { Check } from "@bigbinary/neeto-icons";
-import { Button, Pane, Textarea } from "@bigbinary/neetoui/v2";
+import { Button, Pane, Toastr } from "@bigbinary/neetoui/v2";
 import { Input, Select } from "@bigbinary/neetoui/v2/formik";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
-import { ROLE_OPTIONS, TAG_OPTIONS } from "./constants";
+import { ROLE_OPTIONS } from "./constants";
 
 export default function NewContactForm({ onClose }) {
   const handleSubmit = async () => {
@@ -33,31 +33,35 @@ export default function NewContactForm({ onClose }) {
       {({ isSubmitting }) => (
         <>
           <Pane.Body>
-            <Form className="w-full space-y-6">
+            <Form className="w-full space-y-4">
+              <div className="flex-row justify-between space-x-10">
+                <Input
+                  label="First Name*"
+                  name="firstName"
+                  className="mb-2 inline-flex flex-1"
+                  placeHolder="Enter first name"
+                />
+                <Input
+                  label="Last Name*"
+                  name="lastName"
+                  className="mb-2 inline-flex flex-1"
+                  placeHolder="Enter last name"
+                />
+              </div>
+
               <Input
-                label="Title*"
-                name="title"
+                label="Email Address*"
+                name="lastName"
                 className="mb-6"
-                placeHolder="Enter title"
+                placeHolder="Enter your email address"
               />
-              <Textarea
-                label="Description*"
-                placeholder="Enter note description"
-              />
+
               <Select
-                label="Assigned Contact*"
-                name="contact"
-                className="mb-6"
-                value={null}
-                options={ROLE_OPTIONS}
-                placeHolder="Select Role"
-              />
-              <Select
-                label="Tags*"
+                label="Role*"
                 name="tag"
                 className="mb-6"
-                options={TAG_OPTIONS}
-                placeHolder="Select Tag"
+                options={ROLE_OPTIONS}
+                placeHolder="Select Role"
               />
             </Form>
           </Pane.Body>
@@ -70,6 +74,7 @@ export default function NewContactForm({ onClose }) {
               style="primary"
               className="mr-2"
               icon={Check}
+              onClick={() => Toastr.success("Contact added successfully.")}
               disabled={isSubmitting}
               loading={isSubmitting}
             />
