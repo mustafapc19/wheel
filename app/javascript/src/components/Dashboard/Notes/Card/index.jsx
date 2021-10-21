@@ -10,15 +10,13 @@ import CardHeader from "./CardHeader";
 const Card = ({ data }) => {
   const { setShowDeleteAlert, bodyText, imageUrl } = data;
   return (
-    <>
-      <div className="m-2 p-4 border neeto-ui-border-gray-200 neeto-ui-shadow-s">
-        <CardHeader setShowDeleteAlert={setShowDeleteAlert} />
-        <CardBody>
-          <Typography style="body3">{bodyText}</Typography>
-        </CardBody>
-        <CardFooter imageUrl={imageUrl} />
-      </div>
-    </>
+    <div className="m-2 p-4 border neeto-ui-border-gray-200 neeto-ui-shadow-s">
+      <CardHeader setShowDeleteAlert={setShowDeleteAlert} />
+      <CardBody>
+        <Typography style="body3">{bodyText}</Typography>
+      </CardBody>
+      <CardFooter imageUrl={imageUrl} />
+    </div>
   );
 };
 
