@@ -10,7 +10,7 @@ const Menubar = () => {
       showMenu
       title={
         <div className="flex justify-between">
-          <Typography style="h2">Notes</Typography>
+          <Typography style="h2">Contacts</Typography>
         </div>
       }
     >
