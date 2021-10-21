@@ -6,16 +6,14 @@ import { Input, Select } from "@bigbinary/neetoui/v2/formik";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
-import notesApi from "apis/notes";
-
 import { ROLE_OPTIONS, TAG_OPTIONS } from "./constants";
 
-export default function NewNoteForm({ onClose, refetch }) {
-  const handleSubmit = async values => {
+export default function NewContactForm({ onClose }) {
+  const handleSubmit = async () => {
     try {
-      await notesApi.create(values);
-      refetch();
-      onClose();
+      // await notesApi.create(values);
+      // refetch();
+      // onClose();
     } catch (err) {
       logger.error(err);
     }

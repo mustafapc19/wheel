@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 import { Plus, Search } from "@bigbinary/neeto-icons";
-import { Button } from "@bigbinary/neetoui/v2";
+import { Button, Pagination } from "@bigbinary/neetoui/v2";
 import { Container, Header } from "@bigbinary/neetoui/v2/layouts";
 import { Input, PageLoader } from "neetoui";
 
-import Card from "./Card";
-import { CARD_DATA } from "./constants";
+import ContactTable from "./ContactTable";
 import DeleteAlert from "./DeleteAlert";
 import Menubar from "./MenuBar";
-import NewNotePane from "./NewNotePane";
+import NewNotePane from "./NewContactPane";
 
-const Notes = () => {
+const Contacts = () => {
   const [isLoading, setLoading] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
+  const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -40,7 +39,7 @@ const Notes = () => {
       <Menubar />
       <Container>
         <Header
-          title="All Notes"
+          title="All Contacts"
           menuBarToggle={() => {}}
           actionBlock={
             <div className="flex space-x-4">
@@ -56,8 +55,8 @@ const Notes = () => {
               </div>
               <div className="flex">
                 <Button
-                  onClick={() => setShowNewNotePane(true)}
-                  label="Add Note"
+                  onClick={() => setShowNewContactPane(true)}
+                  label="Add Contact"
                   style="primary"
                   size="large"
                   icon={Plus}
@@ -68,25 +67,20 @@ const Notes = () => {
           }
         />
 
-        <div className="flex-col w-full">
-          {Array(4)
-            .fill(0)
-            .map((_, index) => (
-              <Card
-                key={index.toString()}
-                data={{
-                  setShowDeleteAlert: setShowDeleteAlert,
-                  ...CARD_DATA
-                }}
-              />
-            ))}
-        </div>
+        <ContactTable setShowDeleteAlert={setShowDeleteAlert} />
 
         <NewNotePane
-          showPane={showNewNotePane}
-          setShowPane={setShowNewNotePane}
-          fetchNotes={fetchNotes}
+          showPane={showNewContactPane}
+          setContactPane={setShowNewContactPane}
         />
+        <div className="flex flex-row items-center justify-end w-full mt-6 mb-8">
+          <Pagination
+            count={300}
+            pageNo={1}
+            pageSize={25}
+            navigate={() => {}}
+          />
+        </div>
         {showDeleteAlert && (
           <DeleteAlert
             onClose={() => setShowDeleteAlert(false)}
@@ -98,4 +92,4 @@ const Notes = () => {
   );
 };
 
-export default Notes;
+export default Contacts;
