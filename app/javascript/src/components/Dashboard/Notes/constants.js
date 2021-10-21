@@ -19,4 +19,12 @@ const TAG_OPTIONS = [
     value: "optionB"
   }
 ];
-export { ROLE_OPTIONS, TAG_OPTIONS };
+
+const CARD_DATA = {
+  bodyText: `"Are you getting my texts???" she texted to him. He glanced at it
+            and chuckled under his breath. Of course he was getting them, but if
+            he wasn't getting`,
+  imageUrl: "https://i.pravatar.cc/300"
+};
+
+export { ROLE_OPTIONS, TAG_OPTIONS, CARD_DATA };
