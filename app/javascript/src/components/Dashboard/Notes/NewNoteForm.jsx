@@ -1,14 +1,14 @@
 import React from "react";
 
 import { Check } from "@bigbinary/neeto-icons";
-import { Button, Pane } from "@bigbinary/neetoui/v2";
+import { Button, Pane, Textarea } from "@bigbinary/neetoui/v2";
 import { Input, Select } from "@bigbinary/neetoui/v2/formik";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 
 import notesApi from "apis/notes";
 
-import { TAG_OPTIONS } from "./constants";
+import { ROLE_OPTIONS, TAG_OPTIONS } from "./constants";
 
 export default function NewNoteForm({ onClose, refetch }) {
   const handleSubmit = async values => {
@@ -35,34 +35,32 @@ export default function NewNoteForm({ onClose, refetch }) {
       {({ isSubmitting }) => (
         <>
           <Pane.Body>
-            <Form className="w-full">
+            <Form className="w-full space-y-6">
               <Input
                 label="Title*"
                 name="title"
                 className="mb-6"
                 placeHolder="Enter title"
               />
-              <Input
+              <Textarea
                 label="Description*"
-                name="description"
-                className="mb-6"
-                placeHolder="Enter note description"
+                placeholder="Enter note description"
               />
               <Select
                 label="Assigned Contact*"
                 name="contact"
                 className="mb-6"
                 value={null}
-                // options={ROLE_OPTIONS}
+                options={ROLE_OPTIONS}
                 placeHolder="Select Role"
-              ></Select>
+              />
               <Select
                 label="Tags*"
                 name="tag"
                 className="mb-6"
                 options={TAG_OPTIONS}
                 placeHolder="Select Tag"
-              ></Select>
+              />
             </Form>
           </Pane.Body>
 
