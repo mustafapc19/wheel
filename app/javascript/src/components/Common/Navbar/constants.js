@@ -11,7 +11,7 @@ export const NAV_LINKS = [
   {
     icon: () => <UserCircle size={24} />,
     label: "Contact",
-    to: "/notes"
+    to: "/contacts"
   },
   {
     icon: () => <NeetoInsights size={24} />,
