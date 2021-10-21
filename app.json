@@ -3,6 +3,9 @@
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "env": {
     "SECRET_KEY_BASE": {
       "generator": "secret"
