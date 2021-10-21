@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Modal, Typography } from "@bigbinary/neetoui/v2";
+import { Button, Modal, Toastr, Typography } from "@bigbinary/neetoui/v2";
 
 export default function DeleteAlert({ showDeleteAlert, onClose }) {
   return (
@@ -20,7 +20,14 @@ export default function DeleteAlert({ showDeleteAlert, onClose }) {
         </Typography>
       </Modal.Body>
       <Modal.Footer className="space-x-2">
-        <Button label="Continue" onClick={() => onClose()} size="large" />
+        <Button
+          label="Continue"
+          onClick={() => {
+            onClose();
+            Toastr.success("Contact deleted successfully.");
+          }}
+          size="large"
+        />
         <Button
           style="text"
           label="Cancel"

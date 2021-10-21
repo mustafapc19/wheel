@@ -26,6 +26,7 @@ const NavBar = () => {
   return (
     <Sidebar
       isCollapsed
+      collapsible
       navLinks={NAV_LINKS}
       profileInfo={{
         dropdownProps: [
