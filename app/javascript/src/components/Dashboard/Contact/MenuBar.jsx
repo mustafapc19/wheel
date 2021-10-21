@@ -4,10 +4,10 @@ import { Plus, Search, Settings } from "@bigbinary/neeto-icons";
 import { Typography } from "@bigbinary/neetoui/v2";
 import { MenuBar } from "@bigbinary/neetoui/v2/layouts";
 
-const Menubar = () => {
+const Menubar = ({ showMenuBar }) => {
   return (
     <MenuBar
-      showMenu
+      showMenu={showMenuBar}
       title={
         <div className="flex justify-between">
           <Typography style="h2">Contacts</Typography>

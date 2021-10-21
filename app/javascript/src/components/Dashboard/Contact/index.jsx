@@ -12,6 +12,7 @@ import NewNotePane from "./NewContactPane";
 
 const Contacts = () => {
   const [isLoading, setLoading] = useState(true);
+  const [showMenuBar, setShowMenuBar] = useState(true);
   const [showNewContactPane, setShowNewContactPane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -36,11 +37,11 @@ const Contacts = () => {
 
   return (
     <div className="flex w-full">
-      <Menubar />
+      <Menubar showMenuBar={showMenuBar} />
       <Container>
         <Header
           title="All Contacts"
-          menuBarToggle={() => {}}
+          menuBarToggle={() => setShowMenuBar(!showMenuBar)}
           actionBlock={
             <div className="flex space-x-4">
               <div className="w-96">
