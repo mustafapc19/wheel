@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-
 import { Plus, Search } from "@bigbinary/neeto-icons";
 import { Button, Pagination } from "@bigbinary/neetoui/v2";
 import { Container, Header } from "@bigbinary/neetoui/v2/layouts";
 import { Input, PageLoader } from "neetoui";
-
+import React, { useEffect, useState } from "react";
 import ContactTable from "./ContactTable";
 import DeleteAlert from "./DeleteAlert";
 import Menubar from "./MenuBar";
-import NewNotePane from "./NewContactPane";
+import NewContactPane from "./NewContactPane";
+
+
 
 const Contacts = () => {
   const [isLoading, setLoading] = useState(true);
@@ -70,7 +70,7 @@ const Contacts = () => {
 
         <ContactTable setShowDeleteAlert={setShowDeleteAlert} />
 
-        <NewNotePane
+        <NewContactPane
           showPane={showNewContactPane}
           setContactPane={setShowNewContactPane}
         />
