@@ -5,11 +5,13 @@ import { Button } from "@bigbinary/neetoui/v2";
 import { Container, Header } from "@bigbinary/neetoui/v2/layouts";
 import { Input, PageLoader } from "neetoui";
 
+import DeleteAlert from "components/Common/DeleteAlert";
+
+// import DeleteAlert from "DeleteAlert";
 import Card from "./Card";
 import { CARD_DATA } from "./constants";
-import DeleteAlert from "./DeleteAlert";
 import Menubar from "./MenuBar";
-import NewNotePane from "./NewNotePane";
+import NewNote from "./NewNote";
 
 const Notes = () => {
   const [isLoading, setLoading] = useState(true);
@@ -83,7 +85,7 @@ const Notes = () => {
             ))}
         </div>
 
-        <NewNotePane
+        <NewNote
           showPane={showNewNotePane}
           setShowPane={setShowNewNotePane}
           fetchNotes={fetchNotes}
@@ -92,6 +94,9 @@ const Notes = () => {
           <DeleteAlert
             onClose={() => setShowDeleteAlert(false)}
             showDeleteAlert={showDeleteAlert}
+            header="Delete Note"
+            body="Are you sure you want to delete the note? This action cannot be
+          undone."
           />
         )}
       </Container>

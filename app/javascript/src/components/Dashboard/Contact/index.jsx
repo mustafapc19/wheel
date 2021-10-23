@@ -1,14 +1,15 @@
+import React, { useEffect, useState } from "react";
+
 import { Plus, Search } from "@bigbinary/neeto-icons";
 import { Button, Pagination } from "@bigbinary/neetoui/v2";
 import { Container, Header } from "@bigbinary/neetoui/v2/layouts";
 import { Input, PageLoader } from "neetoui";
-import React, { useEffect, useState } from "react";
+
+import DeleteAlert from "components/Common/DeleteAlert";
+
 import ContactTable from "./ContactTable";
-import DeleteAlert from "./DeleteAlert";
 import Menubar from "./MenuBar";
-import NewContactPane from "./NewContactPane";
-
-
+import NewContact from "./NewContact";
 
 const Contacts = () => {
   const [isLoading, setLoading] = useState(true);
@@ -70,7 +71,7 @@ const Contacts = () => {
 
         <ContactTable setShowDeleteAlert={setShowDeleteAlert} />
 
-        <NewContactPane
+        <NewContact
           showPane={showNewContactPane}
           setContactPane={setShowNewContactPane}
         />
@@ -86,6 +87,9 @@ const Contacts = () => {
           <DeleteAlert
             onClose={() => setShowDeleteAlert(false)}
             showDeleteAlert={showDeleteAlert}
+            header="Delete Contact"
+            body="Are you sure you want to delete contact? These changes cannot be
+          undone."
           />
         )}
       </Container>

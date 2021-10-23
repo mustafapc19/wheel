@@ -5,8 +5,7 @@ import { Avatar, Tag, Tooltip, Typography } from "@bigbinary/neetoui/v2";
 
 const CardFooter = ({ imageUrl }) => {
   return (
-    <div className="border-t-1">
-      <hr></hr>
+    <div className="border-t">
       <div className="flex justify-between pt-3">
         <Tag label="Getting Started" size="small" color="grey" />
 
@@ -22,7 +21,6 @@ const CardFooter = ({ imageUrl }) => {
           </Tooltip>
           <Avatar user={{ name: "User", imageUrl }} size="medium" />
         </div>
-        {/* <Clock size={20} color="gray" /> */}
       </div>
     </div>
   );

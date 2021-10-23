@@ -4,11 +4,14 @@ import { Check } from "@bigbinary/neeto-icons";
 import { Button, Pane, Toastr } from "@bigbinary/neetoui/v2";
 import { Input, Select } from "@bigbinary/neetoui/v2/formik";
 import { Form, Formik } from "formik";
-import * as yup from "yup";
 
-import { ROLE_OPTIONS } from "./constants";
+import {
+  FORM_INITIAL_VALUES,
+  FORM_VALIDATION_SCHEMA,
+  ROLE_OPTIONS
+} from "../constants";
 
-export default function NewContactForm({ onClose }) {
+export default function Create({ onClose }) {
   const handleSubmit = async () => {
     try {
       // await notesApi.create(values);
@@ -20,15 +23,9 @@ export default function NewContactForm({ onClose }) {
   };
   return (
     <Formik
-      initialValues={{
-        title: "",
-        description: ""
-      }}
+      initialValues={FORM_INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required")
-      })}
+      validationSchema={FORM_VALIDATION_SCHEMA}
     >
       {({ isSubmitting }) => (
         <>
@@ -38,13 +35,13 @@ export default function NewContactForm({ onClose }) {
                 <Input
                   label="First Name*"
                   name="firstName"
-                  className="mb-2 inline-flex flex-1"
+                  className="inline-flex flex-1"
                   placeHolder="Enter first name"
                 />
                 <Input
                   label="Last Name*"
                   name="lastName"
-                  className="mb-2 inline-flex flex-1"
+                  className="inline-flex flex-1"
                   placeHolder="Enter last name"
                 />
               </div>
@@ -52,14 +49,12 @@ export default function NewContactForm({ onClose }) {
               <Input
                 label="Email Address*"
                 name="lastName"
-                className="mb-6"
                 placeHolder="Enter your email address"
               />
 
               <Select
                 label="Role*"
                 name="tag"
-                className="mb-6"
                 options={ROLE_OPTIONS}
                 placeHolder="Select Role"
               />

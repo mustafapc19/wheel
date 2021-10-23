@@ -1,3 +1,5 @@
+import * as yup from "yup";
+
 const ROLE_OPTIONS = [
   {
     label: "Contact A",
@@ -27,4 +29,20 @@ const CARD_DATA = {
   imageUrl: "https://i.pravatar.cc/300"
 };
 
-export { ROLE_OPTIONS, TAG_OPTIONS, CARD_DATA };
+const FORM_INITIAL_VALUES = {
+  title: "",
+  description: ""
+};
+
+const FORM_VALIDATION_SCHEMA = yup.object({
+  title: yup.string().required("Title is required"),
+  description: yup.string().required("Description is required")
+});
+
+export {
+  ROLE_OPTIONS,
+  TAG_OPTIONS,
+  CARD_DATA,
+  FORM_INITIAL_VALUES,
+  FORM_VALIDATION_SCHEMA
+};
