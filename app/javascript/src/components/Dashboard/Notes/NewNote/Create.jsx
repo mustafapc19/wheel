@@ -4,13 +4,17 @@ import { Check } from "@bigbinary/neeto-icons";
 import { Button, Pane, Textarea } from "@bigbinary/neetoui/v2";
 import { Input, Select } from "@bigbinary/neetoui/v2/formik";
 import { Form, Formik } from "formik";
-import * as yup from "yup";
 
 import notesApi from "apis/notes";
 
-import { ROLE_OPTIONS, TAG_OPTIONS } from "./constants";
+import {
+  FORM_INITIAL_VALUES,
+  FORM_VALIDATION_SCHEMA,
+  ROLE_OPTIONS,
+  TAG_OPTIONS
+} from "../constants";
 
-export default function NewNoteForm({ onClose, refetch }) {
+export default function Create({ onClose, refetch }) {
   const handleSubmit = async values => {
     try {
       await notesApi.create(values);
@@ -22,26 +26,15 @@ export default function NewNoteForm({ onClose, refetch }) {
   };
   return (
     <Formik
-      initialValues={{
-        title: "",
-        description: ""
-      }}
+      initialValues={FORM_INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        title: yup.string().required("Title is required"),
-        description: yup.string().required("Description is required")
-      })}
+      validationSchema={FORM_VALIDATION_SCHEMA}
     >
       {({ isSubmitting }) => (
         <>
           <Pane.Body>
             <Form className="w-full space-y-6">
-              <Input
-                label="Title*"
-                name="title"
-                className="mb-6"
-                placeHolder="Enter title"
-              />
+              <Input label="Title*" name="title" placeHolder="Enter title" />
               <Textarea
                 label="Description*"
                 placeholder="Enter note description"
@@ -49,7 +42,6 @@ export default function NewNoteForm({ onClose, refetch }) {
               <Select
                 label="Assigned Contact*"
                 name="contact"
-                className="mb-6"
                 value={null}
                 options={ROLE_OPTIONS}
                 placeHolder="Select Role"
@@ -57,7 +49,6 @@ export default function NewNoteForm({ onClose, refetch }) {
               <Select
                 label="Tags*"
                 name="tag"
-                className="mb-6"
                 options={TAG_OPTIONS}
                 placeHolder="Select Tag"
               />

@@ -2,9 +2,9 @@ import React from "react";
 
 import { Pane, Typography } from "@bigbinary/neetoui/v2";
 
-import NewContactForm from "./NewContactForm";
+import Create from "./Create";
 
-export default function NewContactPane({ showPane, setContactPane }) {
+export default function NewContact({ showPane, setContactPane }) {
   const onClose = () => setContactPane(false);
   return (
     <Pane
@@ -17,7 +17,7 @@ export default function NewContactPane({ showPane, setContactPane }) {
         <Typography style="h2">Add New Contact</Typography>
       </div>
       <div>
-        <NewContactForm onClose={onClose} />
+        <Create onClose={onClose} />
       </div>
     </Pane>
   );

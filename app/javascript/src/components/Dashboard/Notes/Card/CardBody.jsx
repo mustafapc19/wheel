@@ -1,7 +1,7 @@
 import React from "react";
 
-const CardBody = props => {
-  return <div className="pb-2">{props.children}</div>;
+const CardBody = ({ children }) => {
+  return <div className="pb-2">{children}</div>;
 };
 
 export default CardBody;
